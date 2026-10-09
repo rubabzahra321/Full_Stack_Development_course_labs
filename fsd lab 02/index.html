@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>Dynamic Student Result</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h1>Student Result Management</h1>
+
+    <form id="studentForm">
+
+        <div id="entrypoint">
+
+            <label>Student Name</label>
+            <br>
+
+            <input type="text" id="studentName" required>
+
+            <br><br>
+
+            <label>Student Image URL</label>
+            <br>
+
+            <input type="text" id="studentImage" required>
+
+            <br><br>
+
+        </div>
+
+
+        <div id="subjects">
+
+            <h3>Subjects</h3>
+
+            <div id="subjectRows">
+
+                <div class="subject-row">
+
+                    <input type="text" class="subject-name" value="Mathematics" placeholder="Subject" required>
+
+                    <input type="number" class="subject-marks" placeholder="Marks" min="0" max="100" required>
+
+                    <button type="button" class="remove-btn">
+                        Remove
+                    </button>
+
+                </div>
+
+
+                <div class="subject-row">
+
+                    <input type="text" class="subject-name" value="English" placeholder="Subject" required>
+
+                    <input type="number" class="subject-marks" placeholder="Marks" min="0" max="100" required>
+
+                    <button type="button" class="remove-btn">
+                        Remove
+                    </button>
+
+                </div>
+
+
+                <div class="subject-row">
+
+                    <input type="text" class="subject-name" value="Programming" placeholder="Subject" required>
+
+                    <input type="number" class="subject-marks" placeholder="Marks" min="0" max="100" required>
+
+                    <button type="button" class="remove-btn">
+                        Remove
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <button type="button" id="addSubject">
+                + Add Subject
+            </button>
+
+            <br>
+
+            <button type="submit">
+                Add Student
+            </button>
+
+        </div>
+
+    </form>
+
+
+    <table>
+
+        <thead id="tableHead"></thead>
+
+        <tbody id="tableBody"></tbody>
+
+    </table>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
