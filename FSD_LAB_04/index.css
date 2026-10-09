@@ -1,0 +1,380 @@
+/* =============================
+   SIMPLE MODERN DESIGN
+   ============================= */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #0b1020;
+    color: #f5f7ff;
+}
+
+header {
+    background: #151c35;
+    padding: 15px 6%;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    box-shadow: 0 2px 12px #0008;
+}
+
+header h2 {
+    margin: 0;
+    color: #72a7ff;
+}
+
+header h2 span { color: #f5c85b; }
+
+nav { flex: 1; }
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 8px;
+    transition: 0.3s;
+}
+
+nav a:hover { color: #72a7ff; }
+
+#userStatus {
+    background: #34405f;
+    padding: 8px 13px;
+    border-radius: 18px;
+    transition: 0.3s;
+}
+
+.hero {
+    padding: 60px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    animation: showUp 0.7s ease;
+}
+
+.hero h1 { font-size: 42px; margin-bottom: 10px; }
+.hero p { font-size: 18px; color: #b9c3dd; }
+
+.hero-badge {
+    width: 150px;
+    height: 150px;
+    border: 4px solid #72a7ff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    animation: float 3s ease-in-out infinite;
+}
+
+.badge-circle {
+    width: 90px;
+    height: 90px;
+    background: #26345f;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 35px;
+    transition: 0.3s;
+}
+
+.hero-badge:hover .badge-circle { transform: rotate(20deg) scale(1.08); }
+
+.content {
+    padding: 20px 8%;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.card, .premium, .video-section {
+    background: #151c35;
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0 8px 25px #0005;
+}
+
+.card { flex: 1; animation: showUp 0.8s ease; }
+
+.phone-area { text-align: center; padding: 20px; }
+
+.phone {
+    width: 180px;
+    height: 330px;
+    margin: auto;
+    background: #292d35;
+    border: 5px solid #626b82;
+    border-radius: 30px;
+    cursor: grab;
+    padding: 15px;
+    box-sizing: border-box;
+    transition: 0.4s;
+    box-shadow: 0 12px 30px #0008;
+}
+
+.phone:hover {
+    transform: translateY(-8px) rotate(2deg);
+    box-shadow: 0 18px 35px #000b;
+}
+
+.camera {
+    background: #090b12;
+    padding: 15px 5px;
+    border-radius: 15px;
+    width: 80px;
+    margin-bottom: 70px;
+}
+
+.phone-logo { font-size: 35px; text-align: center; }
+#engravingText { text-align: center; margin-top: 60px; }
+
+/* =============================
+   PREMIUM PHONE EFFECTS
+   ============================= */
+.phone.effect-glow {
+    box-shadow: 0 0 28px #f0bd42, 0 12px 30px #0008;
+}
+
+.phone.effect-shimmer {
+    animation: shimmerPhone 1.8s infinite;
+}
+
+.phone.effect-aurora {
+    background: linear-gradient(135deg, #4b2c83, #236b75, #8b3d6b) !important;
+    box-shadow: 0 0 30px #8b5cf6, 0 12px 30px #0008;
+}
+
+#engravingText.effect-script {
+    font-family: cursive;
+    font-style: italic;
+    font-size: 22px;
+}
+
+@keyframes shimmerPhone {
+    0%, 100% { box-shadow: 0 12px 30px #0008; }
+    50% { box-shadow: 0 0 24px #72a7ff, 0 12px 30px #0008; }
+}
+
+.choices {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+button, input { font-family: Arial, sans-serif; }
+button { cursor: pointer; }
+
+.color, .storage, .premium-option {
+    padding: 10px 12px;
+    border: 2px solid #414c6e;
+    border-radius: 8px;
+    background: #202a4b;
+    color: white;
+    transition: 0.25s;
+}
+
+.color:hover, .storage:hover, .premium-option:hover { transform: translateY(-2px); }
+.color.active, .storage.active, .premium-option.active { border-color: #72a7ff; background: #2d3d69; }
+
+.premium-color { border-color: #d9ad3d; }
+
+.locked {
+    opacity: 0.65;
+    border-color: #d9ad3d;
+}
+
+.button {
+    display: inline-block;
+    padding: 11px 18px;
+    margin: 5px;
+    border: 0;
+    border-radius: 9px;
+    background: #4f86ff;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.button:hover { transform: translateY(-2px); box-shadow: 0 7px 18px #4f86ff55; }
+.button.light { background: #3b4668; }
+.premium-button { background: #f0bd42; color: #161616; }
+
+input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 11px;
+    margin-bottom: 5px;
+    border: 1px solid #59627c;
+    border-radius: 7px;
+    background: #0f1529;
+    color: white;
+}
+
+input:focus { outline: 2px solid #72a7ff; }
+
+.drop-zone {
+    border: 2px dashed #66718e;
+    padding: 50px 10px;
+    text-align: center;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.drop-zone.over {
+    border-color: #43e0a5;
+    background: #173b38;
+    animation: pulse 0.8s infinite;
+}
+
+.premium, .video-section {
+    width: 84%;
+    margin: 25px auto;
+    box-sizing: border-box;
+}
+
+.premium {
+    border: 1px solid #8b6d28;
+    text-align: center;
+}
+
+.premium-unlocked {
+    margin: 25px auto 5px;
+    padding: 20px;
+    max-width: 500px;
+    background: #17233f;
+    border: 2px solid #f0bd42;
+    border-radius: 14px;
+    animation: showUp 0.6s ease;
+}
+
+#premiumAnimation {
+    width: 120px;
+    height: 120px;
+    margin: auto;
+}
+
+.premium-unlocked h2 {
+    color: #f0bd42;
+}
+
+video { width: 100%; max-width: 800px; border-radius: 10px; }
+footer { text-align: center; padding: 25px; background: #151c35; color: #9fa9c4; }
+.error { color: #ff7186; min-height: 18px; }
+
+/* =============================
+   PAYMENT DESIGN
+   ============================= */
+.modal {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #000b;
+    z-index: 10;
+}
+
+.payment-box {
+    background: #f7f8fc;
+    color: #202535;
+    width: 420px;
+    max-width: 85%;
+    margin: 55px auto;
+    padding: 25px;
+    border-radius: 18px;
+    box-shadow: 0 15px 50px #000b;
+    animation: paymentIn 0.35s ease;
+}
+
+.payment-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.close-button {
+    background: #e8ebf3;
+    border: 0;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+}
+
+.payment-methods {
+    display: flex;
+    gap: 8px;
+    margin: 15px 0;
+}
+
+.payment-method {
+    flex: 1;
+    padding: 12px 5px;
+    border: 2px solid #d4d9e5;
+    border-radius: 9px;
+    background: white;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.payment-method:hover { border-color: #72a7ff; }
+.payment-method.active { border-color: #4f86ff; background: #edf3ff; }
+
+.payment-method input { display: none; }
+
+#paymentAnimation {
+    width: 110px;
+    height: 90px;
+    margin: auto;
+}
+
+.payment-box input { background: white; color: #222; border: 1px solid #cbd1df; }
+.payment-box .error { margin: 0 0 5px; }
+
+.center { text-align: center; }
+
+#toastArea { position: fixed; right: 20px; bottom: 20px; z-index: 20; }
+
+.toast {
+    background: #26345f;
+    color: white;
+    padding: 12px 18px;
+    margin-top: 8px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px #0006;
+    animation: toastIn 0.3s ease;
+}
+
+@keyframes showUp {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse {
+    50% { transform: scale(1.02); }
+}
+
+@keyframes paymentIn {
+    from { opacity: 0; transform: translateY(-25px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes toastIn {
+    from { opacity: 0; transform: translateX(25px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@media (max-width: 800px) {
+    header, .hero, .content { flex-direction: column; }
+    nav { text-align: center; }
+    .hero h1 { font-size: 30px; }
+    .payment-methods { flex-direction: column; }
+}
