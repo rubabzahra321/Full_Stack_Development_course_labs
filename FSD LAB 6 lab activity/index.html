@@ -1,0 +1,226 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>iPhone Studio - FSD Lab 05</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+
+<header>
+    <h2>iPhone<span>Studio</span></h2>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#configure">Customize</a>
+        <a href="#premium">Premium</a>
+        <a href="#api-section">Public API</a>
+        <a href="#backend-section">Backend</a>
+        <a href="#video">Video</a>
+        <a href="#cart-section">Cart (<span id="cartCount">0</span>)</a>
+    </nav>
+    <span id="userStatus">Free User</span>
+</header>
+
+<main>
+
+<section class="hero" id="home">
+    <div>
+        <h1>Make your iPhone yours.</h1>
+        <p>Choose a colour, storage and engraving.</p>
+        <a class="button" href="#configure">Start Customizing</a>
+        <a class="button light" href="#video">Watch Video</a>
+    </div>
+
+    <div class="hero-badge" id="heroBadge">
+        <div class="badge-circle" id="badgeCore">★</div>
+    </div>
+</section>
+
+<section class="content" id="configure">
+
+    <div class="card">
+        <h2 id="productName">iPhone 17 Pro · 128 GB</h2>
+        <h3 id="productPrice">$799</h3>
+
+        <p id="description">
+            A simple iPhone configurator. Choose the colour, storage and engraving.
+        </p>
+
+        <div class="phone-area" id="previewStage">
+            <div class="phone" id="productPreview" draggable="true">
+                <div class="camera">● ● ●</div>
+                <div class="phone-logo">&#63743;</div>
+                <div id="engravingText">Your Name</div>
+            </div>
+        </div>
+
+        <p id="previewMessage">Move your pointer over the phone.</p>
+        <button class="button" id="addToCartBtn">Add to Cart</button>
+    </div>
+
+    <div class="card">
+        <h2>Customize</h2>
+
+        <form id="customForm">
+            <h3>Colour</h3>
+            <div class="choices">
+                <button type="button" class="color active" id="black">Black</button>
+                <button type="button" class="color" id="white">White</button>
+                <button type="button" class="color" id="blue">Blue</button>
+                <button type="button" class="color premium-color locked" id="gold">🔒 Gold</button>
+                <button type="button" class="color premium-color locked" id="rose">🔒 Rose</button>
+            </div>
+
+            <h3>Storage</h3>
+            <div class="choices">
+                <button type="button" class="storage active" id="storage128">128 GB - $799</button>
+                <button type="button" class="storage" id="storage256">256 GB - $899</button>
+                <button type="button" class="storage" id="storage512">512 GB - $1099</button>
+            </div>
+
+            <h3>Engraving</h3>
+            <input type="text" id="nameInput" maxlength="14" placeholder="Enter your name">
+            <p id="charCount">0 / 14 characters</p>
+            <p class="error" id="nameError"></p>
+
+            <h3>Premium Features</h3>
+            <div class="choices">
+                <button type="button" class="premium-option locked" id="glow">🔒 Glow</button>
+                <button type="button" class="premium-option locked" id="shimmer">🔒 Shimmer</button>
+                <button type="button" class="premium-option locked" id="script">🔒 Script</button>
+                <button type="button" class="premium-option locked" id="aurora">🔒 Aurora</button>
+            </div>
+
+            <button class="button" type="submit">Save Design</button>
+            <button class="button light" type="reset" id="resetBtn">Reset</button>
+            <p id="formMessage"></p>
+        </form>
+    </div>
+
+    <div class="card" id="cart-section">
+        <h2>Your Cart</h2>
+        <div class="drop-zone" id="dropZone">Drag the phone here</div>
+        <p id="cartItem">No item in cart.</p>
+        <p>Quantity: <span id="cartQty">0</span></p>
+        <h3>Total: <span id="cartTotal">$0</span></h3>
+        <button class="button" id="payNowBtn">Pay Now</button>
+        <button class="button light" id="clearCartBtn">Clear Cart</button>
+        <p id="cartMessage"></p>
+    </div>
+
+</section>
+
+<section class="premium" id="premium">
+    <h2>Premium</h2>
+    <p>Unlock special colours and effects.</p>
+    <h3>$9.99 One Time</h3>
+    <button class="button premium-button" id="openPaymentBtn">Upgrade to Premium</button>
+    <button class="button light" id="demoResetBtn">Back to Free</button>
+
+    <div class="premium-unlocked" id="premiumUnlocked" style="display:none;">
+        <div id="premiumAnimation"></div>
+        <h2>✨ Premium Enabled!</h2>
+        <p id="premiumMessage">All Premium colours and effects are now unlocked.</p>
+    </div>
+</section>
+
+
+<section class="card" id="backend-section" style="width:84%; margin:25px auto; box-sizing:border-box;">
+    <h2>🖥️ SQL Backend Integration</h2>
+    <p>Communicate with the Node.js/Express backend for products and payments (GET and POST requests)</p>
+
+    <button class="button" id="backendGetBtn">GET Products from Backend</button>
+    <button class="button premium-button" id="backendPostBtn">Add Current iPhone as Product</button>
+    <button class="button light" id="backendConfigsBtn">View Saved Payments</button>
+     <button id="backendManageBtn" class="button light" type="button">
+    Manage Products
+</button>
+    <div id="backendLoading" style="display:none; margin:15px 0;">
+        <p>⏳ Communicating with backend...</p>
+    </div>
+
+    <div id="backendError" class="error" style="margin:15px 0;"></div>
+    <div id="backendResult" style="margin-top:20px;"></div>
+</section>
+
+<section class="video-section" id="video">
+    <h2>Watch iPhone Ad</h2>
+    <video id="adVideo" controls>
+        <source src="iphone-ad.mp4" type="video/mp4">
+    </video>
+    <p id="videoMessage">Press play to watch.</p>
+</section>
+
+</main>
+
+<footer>
+    FSD Lab 05 - iPhone Configurator
+</footer>
+
+<div class="modal" id="paymentModal">
+    <div class="payment-box">
+        <div class="payment-top">
+            <div>
+                <h2 id="payTitle">Payment</h2>
+                <p>Secure demo checkout</p>
+            </div>
+            <button class="close-button" id="closePaymentBtn">X</button>
+        </div>
+
+        <h3 id="planPrice">$9.99</h3>
+
+        <div class="payment-methods">
+            <label class="payment-method active" id="cardMethod">
+                💳 Card
+                <input type="radio" name="paymentMethod" value="card" checked>
+            </label>
+            <label class="payment-method" id="paypalMethod">
+                🅿️ PayPal
+                <input type="radio" name="paymentMethod" value="paypal">
+            </label>
+            <label class="payment-method" id="walletMethod">
+                📱 Wallet
+                <input type="radio" name="paymentMethod" value="wallet">
+            </label>
+        </div>
+
+        <div id="paymentFormArea">
+            <form id="paymentForm">
+                <input type="text" id="cardName" placeholder="Cardholder Name">
+                <p class="error" id="cardNameError"></p>
+
+                <input type="text" id="cardNumber" placeholder="16 digit card number" maxlength="16">
+                <p class="error" id="cardNumberError"></p>
+
+                <input type="text" id="cardExpiry" placeholder="MM/YY" maxlength="5">
+                <p class="error" id="cardExpiryError"></p>
+
+                <input type="password" id="cardCvv" placeholder="CVV" maxlength="4">
+                <p class="error" id="cardCvvError"></p>
+
+                <button class="button premium-button" id="payBtn" type="submit">Pay</button>
+            </form>
+        </div>
+
+        <div id="processing" class="center" style="display:none;">
+            <div id="paymentAnimation"></div>
+            <h2>Processing...</h2>
+            <p>Please wait.</p>
+        </div>
+
+        <div id="success" class="center" style="display:none;">
+            <div id="successAnimation"></div>
+            <h2 id="successTitle">Payment Successful!</h2>
+            <p id="successText"></p>
+            <button class="button" id="doneBtn">Done</button>
+        </div>
+    </div>
+</div>
+
+<div id="toastArea"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
+<script src="index.js"></script>
+</body>
+</html>
