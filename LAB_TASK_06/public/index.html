@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Rubab Zahra's personal portfolio in Computer Science, frontend development and Generative AI.">
+  <meta name="theme-color" content="#06070d">
+  <title>Rubab Zahra | Portfolio</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23b9a6ff'/%3E%3Cstop offset='1' stop-color='%2374bcff'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='18' fill='url(%23g)'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='27' font-weight='800' text-anchor='middle' fill='%230c0f1d'%3ERZ%3C/text%3E%3C/svg%3E">
+
+  <!-- Runs before first paint: enables the animation styles and restores the saved colour theme (no flash). -->
+  <script>
+    (function () {
+      var root = document.documentElement;
+      root.classList.add('js');
+      try {
+        var saved = localStorage.getItem('rz-theme');
+        if (saved === 'light' || saved === 'dark') root.setAttribute('data-theme', saved);
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Short intro splash (pure CSS, hides itself) -->
+  <div class="loader" aria-hidden="true">
+    <div class="loader-mark">RZ</div>
+    <div class="loader-bar"><span></span></div>
+  </div>
+
+  <!-- Ambient background layers and page-level effects -->
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+  <div class="bg" aria-hidden="true">
+    <span class="bg-grid"></span>
+    <span class="bg-blob blob-1"></span>
+    <span class="bg-blob blob-2"></span>
+    <span class="bg-blob blob-3"></span>
+    <span class="bg-noise"></span>
+  </div>
+  <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="topbar" id="topbar">
+    <a class="brand" href="#home"><span class="brand-mark">RZ</span><span class="brand-name">Rubab Zahra<span class="brand-dot">.</span></span></a>
+    <nav id="mainNav" class="nav-links" aria-label="Primary">
+      <a href="#home">Home</a><a href="#about">About</a><a href="#skills">Skills</a><a href="#education">Education</a><a href="#experience">Experience</a><a href="#projects">Projects</a>
+      <button class="button button-small" id="openManager"><i class="bi bi-sliders2"></i> Manage Portfolio</button>
+    </nav>
+    <div class="topbar-actions">
+      <button class="icon-button theme-toggle" id="themeToggle" type="button" aria-label="Switch between light and dark theme"><i class="bi bi-moon-stars-fill icon-moon"></i><i class="bi bi-sun-fill icon-sun"></i></button>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation"><i class="bi bi-list"></i></button>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ============ HERO ============ -->
+    <section class="hero section-wrap" id="home">
+      <div class="hero-copy">
+        <div class="eyebrow eyebrow-pill" data-anim style="--i:0"><span class="status-dot"></span> COMPUTER SCIENCE · AI · WEB DEVELOPMENT</div>
+        <p class="hero-greeting" data-anim style="--i:1">Hello, I'm</p>
+        <h1 id="heroName" data-anim style="--i:2">Rubab Zahra<span class="accent">.</span></h1>
+        <h2 id="heroHeadline" data-anim style="--i:3">Computer Science Undergraduate | AI & Frontend Developer</h2>
+        <p class="hero-typed" data-anim style="--i:4"><span class="typed-prefix">&gt; building</span> <span id="typedText" data-words="responsive interfaces|AI-powered apps|RAG pipelines|clean, reliable code"></span><span class="caret" aria-hidden="true"></span></p>
+        <p class="hero-description" id="heroAbout" data-anim style="--i:5">I build thoughtful digital experiences and explore practical applications of Generative AI.</p>
+        <div class="hero-actions" data-anim style="--i:6"><a class="button" href="#projects"><span>Explore my work</span> <i class="bi bi-arrow-up-right"></i></a><a class="button button-outline" href="#about">Get to know me</a></div>
+        <div class="hero-socials" data-anim style="--i:7"><a id="githubLink" href="https://github.com/rubabzahra321" target="_blank" rel="noreferrer"><i class="bi bi-github"></i> GitHub</a><a id="linkedinLink" href="https://www.linkedin.com/in/rubab-zahra-765827332/" target="_blank" rel="noreferrer"><i class="bi bi-linkedin"></i> LinkedIn</a><span id="heroLocation"><i class="bi bi-geo-alt"></i> Pakistan</span></div>
+        <div class="hero-stats" data-anim style="--i:8" aria-label="Portfolio at a glance">
+          <div class="stat"><strong data-stat="projects">0</strong><span>Projects</span></div>
+          <div class="stat"><strong data-stat="skills">0</strong><span>Technologies</span></div>
+          <div class="stat"><strong data-stat="domains">0</strong><span>Focus areas</span></div>
+        </div>
+      </div>
+
+      <div class="hero-visual" id="heroVisual" data-anim style="--i:3">
+        <div class="orbit orbit-one"><i class="orbit-dot"></i></div>
+        <div class="orbit orbit-two"><i class="orbit-dot"></i></div>
+        <div class="portrait-frame">
+          <span class="portrait-ring"></span>
+          <div class="portrait-inner">
+            <div class="portrait-glow"></div>
+            <img id="profileImage" src="" alt="Rubab Zahra profile portrait" hidden>
+            <div id="portraitPlaceholder" class="portrait-placeholder"><span>RZ</span><small>BUILD · LEARN · CREATE</small></div>
+          </div>
+          <div class="portrait-caption"><span class="caption-icon"><i class="bi bi-stars"></i></span><span><strong>Curious by nature</strong><small>Building one project at a time</small></span></div>
+        </div>
+        <div class="floating-chip chip-ai"><i class="bi bi-cpu"></i> Generative AI</div>
+        <div class="floating-chip chip-code"><i class="bi bi-code-slash"></i> Frontend</div>
+        <div class="floating-chip chip-rag"><i class="bi bi-diagram-3"></i> RAG &amp; Agents</div>
+      </div>
+
+      <a class="scroll-hint" href="#about" aria-label="Scroll to about section"><span class="scroll-mouse"><i></i></span></a>
+    </section>
+
+    <!-- Auto-built from the skills below (see effects.js) -->
+    <div class="marquee" id="marquee" aria-hidden="true" hidden><div class="marquee-track" id="marqueeTrack"></div></div>
+
+    <!-- ============ ABOUT ============ -->
+    <section class="section-wrap about-section" id="about">
+      <div class="section-heading" data-reveal><p class="eyebrow">A LITTLE ABOUT ME</p><h2>Curiosity meets <span class="accent">creation.</span></h2><p>Learning the fundamentals, building real projects, and turning ideas into useful products.</p></div>
+      <div class="about-grid">
+        <article class="glass-card about-card about-card-main" data-reveal style="--i:0"><div class="card-icon"><i class="bi bi-person-workspace"></i></div><h3>Who I am</h3><p id="aboutText">I am a Computer Science undergraduate interested in software development and practical AI applications.</p></article>
+        <article class="glass-card about-card" data-reveal style="--i:1"><div class="card-icon"><i class="bi bi-mortarboard"></i></div><h3>What I'm learning</h3><p>Modern frontend development, Python-based AI applications, retrieval-augmented generation (RAG), and AI agent workflows.</p></article>
+        <article class="glass-card about-card" data-reveal style="--i:2"><div class="card-icon"><i class="bi bi-lightbulb"></i></div><h3>How I work</h3><p>I value clear interfaces, reliable data, continuous learning, and building projects that solve practical problems.</p></article>
+      </div>
+    </section>
+
+    <!-- ============ SKILLS ============ -->
+    <section class="section-wrap" id="skills">
+      <div class="section-heading heading-row" data-reveal><div><p class="eyebrow">MY TOOLKIT</p><h2>Skills & <span class="accent">technologies.</span></h2><p>A growing toolkit across web development, AI, and data.</p></div><button class="text-button manage-shortcut"><i class="bi bi-pencil-square"></i> Edit skills</button></div>
+      <div id="skillsList" class="skills-grid"><p class="loading">Loading skills…</p></div>
+    </section>
+
+    <!-- ============ EDUCATION ============ -->
+    <section class="section-wrap" id="education">
+      <div class="section-heading" data-reveal><p class="eyebrow">THE FOUNDATION</p><h2>My <span class="accent">education.</span></h2></div>
+      <div id="educationList" class="timeline-list"><p class="loading">Loading education…</p></div>
+    </section>
+
+    <!-- ============ EXPERIENCE ============ -->
+    <section class="section-wrap" id="experience">
+      <div class="section-heading" data-reveal><p class="eyebrow">WHAT I'VE BEEN DOING</p><h2>Experience & <span class="accent">practice.</span></h2><p>Hands-on work, learning, and collaboration.</p></div>
+      <div id="experienceList" class="experience-grid"><p class="loading">Loading experience…</p></div>
+    </section>
+
+    <!-- ============ PROJECTS ============ -->
+    <section class="section-wrap projects-section" id="projects">
+      <div class="section-heading heading-row" data-reveal><div><p class="eyebrow">SELECTED WORK</p><h2>Projects I'm <span class="accent">building.</span></h2><p>Practical experiments that turn concepts into working applications.</p></div><button class="text-button manage-shortcut"><i class="bi bi-plus-circle"></i> Manage projects</button></div>
+      <div id="projectsList" class="projects-grid"><p class="loading">Loading projects…</p></div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="section-wrap contact-section" id="contact">
+      <div class="contact-card" data-reveal><div class="contact-copy"><p class="eyebrow">LET'S CONNECT</p><h2>Have an idea? <span class="accent">Let's talk.</span></h2><p id="contactEmail">I'm always open to learning, collaboration, and interesting projects.</p></div><a id="emailButton" class="button button-large" href="mailto:"><span>Get in touch</span> <i class="bi bi-arrow-up-right"></i></a></div>
+    </section>
+  </main>
+
+  <footer class="footer"><a class="brand" href="#home"><span class="brand-mark">RZ</span><span class="brand-name">Rubab Zahra<span class="brand-dot">.</span></span></a><p>Designed with intention. Built while learning.</p><span>© <span id="currentYear"></span> Rubab Zahra</span></footer>
+
+  <button class="to-top" id="toTop" type="button" aria-label="Back to top"><i class="bi bi-arrow-up"></i></button>
+
+  <!-- Management panel: it is hidden until the user selects Manage Portfolio. -->
+  <div class="modal-backdrop" id="managerBackdrop" hidden>
+    <section class="manager-modal" role="dialog" aria-modal="true" aria-labelledby="managerTitle">
+      <div class="manager-header"><div><p class="eyebrow">PORTFOLIO CMS</p><h2 id="managerTitle">Manage your portfolio</h2><p class="muted">Changes are saved to MySQL.</p></div><button class="icon-button" id="closeManager" aria-label="Close manager"><i class="bi bi-x-lg"></i></button></div>
+      <div class="manager-tabs" id="managerTabs"><button class="tab-button active" data-section="profile">Profile</button><button class="tab-button" data-section="skills">Skills</button><button class="tab-button" data-section="education">Education</button><button class="tab-button" data-section="experience">Experience</button><button class="tab-button" data-section="projects">Projects</button></div>
+      <div class="manager-content"><div id="managerMessage" class="notice" hidden></div><div id="managerFormArea"></div><div id="managerItems" class="manager-items"></div></div>
+    </section>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="app.js"></script>
+  <!-- Visual effects only (animations, theme, scroll behaviour). No data or API logic lives here. -->
+  <script src="effects.js"></script>
+</body>
+</html>
