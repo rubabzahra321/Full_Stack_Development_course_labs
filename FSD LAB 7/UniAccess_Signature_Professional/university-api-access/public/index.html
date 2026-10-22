@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0f1538" />
+  <title>UniAccess | University API Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="load-bar" id="load-bar"></div>
+  <div class="bg-orbs" aria-hidden="true"><i></i><i></i><i></i></div>
+  <div class="scrim" id="scrim"></div>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="/" aria-label="UniAccess home">
+        <span class="brand-mark">U<span>.</span></span>
+        <span><strong>UniAccess</strong><small>UNIVERSITY PORTAL</small></span>
+      </a>
+      <div class="nav-label">WORKSPACE</div>
+      <nav class="nav-list">
+        <button class="nav-link active" data-view="dashboard"><span class="nav-icon">▦</span> Dashboard</button>
+        <button class="nav-link" data-view="settings"><span class="nav-icon">⌘</span> API settings</button>
+        <button class="nav-link" data-view="admin"><span class="nav-icon">⚙</span> Administration <span class="nav-arrow">↗</span></button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="security-card"><div class="security-icon">✓</div><strong>Secure access</strong><p>API keys protect academic records and enforce role-based permissions.</p></div>
+        <div class="profile-mini"><div class="avatar">UA</div><div><strong>University Portal</strong><small>Local development</small></div><span class="online-dot"></span></div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <button class="icon-button menu-button" id="menu-button" type="button" aria-label="Open menu">☰</button>
+        <div style="flex:1"><div class="eyebrow">ACADEMIC SERVICES <span> / </span> <span id="breadcrumb">OVERVIEW</span></div><h1 id="page-title">Dashboard</h1></div>
+        <div class="topbar-right"><span class="environment"><i></i> Local environment</span><button class="theme-toggle" id="theme-toggle" type="button" title="Switch color theme" aria-label="Switch color theme"><span class="theme-toggle-icon">☾</span><span class="theme-toggle-label">Dark mode</span></button><button class="icon-button" id="refresh-button" title="Refresh data" aria-label="Refresh data">↻</button></div>
+      </header>
+
+      <section class="view active" id="view-dashboard">
+        <div class="welcome-row"><div><p class="welcome-kicker">YOUR ACADEMIC SPACE</p><h2>Welcome to UniAccess</h2><p class="muted">A secure gateway to academic information and university APIs.</p></div><div class="date-chip"><span class="date-icon">◷</span><span><strong id="today-date">Today</strong><small>API access portal</small></span></div></div>
+        <div class="notice notice-blue"><span class="notice-symbol">i</span><div><strong>Get started with your API key</strong><p>Open API settings to save the key assigned to you. Your dashboard will display data based on your role and permissions.</p></div><button class="text-button" data-go="settings">Configure key <span>→</span></button></div>
+        <div class="section-heading"><div><h3>Access overview</h3><p class="muted">Your current authenticated session</p></div><span class="status-pill neutral" id="session-status"><i></i> Not connected</span></div>
+        <div class="stats-grid">
+          <article class="stat-card"><div class="stat-top"><span>Access role</span><span class="stat-icon indigo">♙</span></div><div class="stat-value" id="stat-role">—</div><div class="stat-foot">Based on your API key</div></article>
+          <article class="stat-card"><div class="stat-top"><span>Requests used</span><span class="stat-icon blue">↗</span></div><div class="stat-value"><span id="stat-used">—</span><span class="stat-total" id="stat-total"></span></div><div class="progress-track"><div class="progress-fill" id="usage-progress"></div></div><div class="stat-foot" id="usage-caption">Save a key to view usage</div></article>
+          <article class="stat-card"><div class="stat-top"><span>Academic records</span><span class="stat-icon teal">▤</span></div><div class="stat-value" id="stat-records">—</div><div class="stat-foot" id="records-caption">Available after authentication</div></article>
+          <article class="stat-card"><div class="stat-top"><span>API status</span><span class="stat-icon green">✓</span></div><div class="stat-value" id="stat-api">Ready</div><div class="stat-foot" id="api-caption">Waiting for API key</div></article>
+        </div>
+        <div class="content-grid">
+          <section class="panel"><div class="panel-header"><div><h3>Academic information</h3><p class="muted">Records permitted by your access level</p></div><span class="panel-badge">LIVE DATA</span></div><div id="academic-content" class="empty-state"><div class="empty-illustration">▤</div><strong>No records loaded yet</strong><p>Save your assigned API key in settings, then load your academic information.</p><button class="button button-primary" data-go="settings">Set up API key</button></div></section>
+          <section class="panel activity-panel"><div class="panel-header"><div><h3>Quick actions</h3><p class="muted">Manage your access</p></div></div><button class="action-row" data-go="settings"><span class="action-icon">⌘</span><span><strong>Configure API key</strong><small>Save, change, or reconnect with an assigned key</small></span><b>→</b></button><button class="action-row" id="switch-account-button"><span class="action-icon lavender">⇄</span><span><strong>Switch account</strong><small>Disconnect and enter another assigned API key</small></span><b>→</b></button><button class="action-row" id="load-records-button"><span class="action-icon lavender">↻</span><span><strong>Load academic records</strong><small>Fetch data using AJAX</small></span><b>→</b></button><button class="action-row" data-go="admin"><span class="action-icon mint">⚙</span><span><strong>Admin management</strong><small>Manage keys and access limits</small></span><b>→</b></button><div class="tip-box"><span>✦</span><p><strong>Security tip</strong><br />Never share your API key. It is sent in the request header, not in the URL.</p></div></section>
+        </div>
+      </section>
+
+      <section class="view" id="view-settings">
+        <div class="page-intro"><div><h2>API settings</h2><p class="muted">Connect, change accounts, or reconnect with any previously assigned API key.</p></div><span class="pill-outline">KEY MANAGEMENT</span></div>
+        <div class="settings-layout"><section class="panel settings-panel"><div class="panel-header"><div><h3>Connection credentials</h3><p class="muted">Choose your role and enter the API key issued by the administrator.</p></div><span class="lock-badge">♢ Encrypted transport</span></div>
+          <form id="settings-form"><label for="role-select">Access role</label><select id="role-select" required><option value="student">Student</option><option value="teacher">Teacher</option></select><label for="api-key-input">Assigned API key</label><div class="input-with-action"><input id="api-key-input" type="password" placeholder="Paste your assigned API key" autocomplete="off" required /><button type="button" id="toggle-key" class="input-action">Show</button></div><p class="field-help">Your key is saved in this browser only for this lab demonstration. Do not use a real production key in a shared computer.</p><div class="form-actions"><button class="button button-primary" type="submit">Save and connect <span>→</span></button><button class="button button-secondary" type="button" id="clear-key">Clear saved key</button></div><div id="settings-message" class="inline-message" aria-live="polite"></div></form>
+        </section><aside class="panel how-panel"><div class="how-icon">⌘</div><h3>How API access works</h3><ol class="steps-list"><li><span>1</span><div><strong>Receive your key</strong><p>The administrator assigns a key to your student or teacher account.</p></div></li><li><span>2</span><div><strong>Save it here</strong><p>Choose the matching role and save the key in your browser.</p></div></li><li><span>3</span><div><strong>Access permitted data</strong><p>The server validates the key, role and request limit before returning data.</p></div></li></ol><div class="notice notice-amber small-notice"><span class="notice-symbol">!</span><p>Student keys can only retrieve the student record associated with that key.</p></div></aside></div>
+      </section>
+
+      <section class="view" id="view-admin">
+        <div class="page-intro"><div><h2>Administration</h2><p class="muted">Issue API keys, control request limits and review API usage.</p></div><span class="pill-outline">RESTRICTED ACCESS</span></div>
+        <section class="panel admin-auth" id="admin-auth-panel"><div class="admin-auth-icon">⚿</div><div class="admin-auth-copy"><h3>Administrator authentication</h3><p class="muted">Enter the predefined admin API key to access management tools.</p></div><form id="admin-login-form" class="admin-login-form"><input type="password" id="admin-key-input" placeholder="Enter admin API key" autocomplete="off" required /><button class="button button-primary" type="submit">Unlock admin</button></form><div id="admin-login-message" class="inline-message"></div></section>
+        <div id="admin-workspace" class="hidden">
+          <div class="stats-grid admin-stats"><article class="stat-card"><div class="stat-top"><span>Students</span><span class="stat-icon indigo">♙</span></div><div class="stat-value" id="admin-students-count">0</div><div class="stat-foot">Registered students</div></article><article class="stat-card"><div class="stat-top"><span>Teachers</span><span class="stat-icon blue">♟</span></div><div class="stat-value" id="admin-teachers-count">0</div><div class="stat-foot">Registered teachers</div></article><article class="stat-card"><div class="stat-top"><span>Active keys</span><span class="stat-icon green">✓</span></div><div class="stat-value" id="admin-active-count">0</div><div class="stat-foot">Currently authorized</div></article><article class="stat-card"><div class="stat-top"><span>Requests logged</span><span class="stat-icon teal">↗</span></div><div class="stat-value" id="admin-requests-count">0</div><div class="stat-foot">Persisted in MySQL</div></article></div>
+          <div class="admin-grid people-admin-grid">
+            <section class="panel"><div class="panel-header"><div><h3>Add a student</h3><p class="muted">Register a student in MySQL before issuing their API key.</p></div><span class="panel-badge">STUDENT</span></div>
+              <form id="add-student-form" class="admin-form">
+                <label for="student-roll">Roll number</label><input id="student-roll" name="rollNumber" placeholder="AU-26-CS-005" required />
+                <label for="student-name">Full name</label><input id="student-name" name="fullName" placeholder="Student full name" required />
+                <label for="student-email">Email</label><input id="student-email" name="email" type="email" placeholder="student@university.edu" required />
+                <div class="form-row"><div><label for="student-department">Department</label><input id="student-department" name="department" placeholder="Computer Science" required /></div><div><label for="student-semester">Semester</label><input id="student-semester" name="semester" type="number" min="1" max="20" value="1" required /></div></div>
+                <button class="button button-primary" type="submit">＋ Add student</button><div id="add-student-message" class="inline-message" aria-live="polite"></div>
+              </form>
+            </section>
+            <section class="panel"><div class="panel-header"><div><h3>Add a teacher</h3><p class="muted">Register a teacher in MySQL before issuing their API key.</p></div><span class="panel-badge">TEACHER</span></div>
+              <form id="add-teacher-form" class="admin-form">
+                <label for="teacher-employee">Employee number</label><input id="teacher-employee" name="employeeNumber" placeholder="EMP-CS-103" required />
+                <label for="teacher-name">Full name</label><input id="teacher-name" name="fullName" placeholder="Teacher full name" required />
+                <label for="teacher-email">Email</label><input id="teacher-email" name="email" type="email" placeholder="teacher@university.edu" required />
+                <label for="teacher-department">Department</label><input id="teacher-department" name="department" placeholder="Computer Science" required />
+                <button class="button button-primary" type="submit">＋ Add teacher</button><div id="add-teacher-message" class="inline-message" aria-live="polite"></div>
+              </form>
+            </section>
+          </div>
+          <div class="admin-grid"><section class="panel"><div class="panel-header"><div><h3>Generate an API key</h3><p class="muted">Assign a key and define its request allowance.</p></div><span class="panel-badge">NEW KEY</span></div><form id="generate-key-form" class="admin-form"><div class="form-row"><div><label for="new-key-role">Role</label><select id="new-key-role"><option value="student">Student</option><option value="teacher">Teacher</option></select></div><div><label for="new-key-limit">Request limit</label><input type="number" id="new-key-limit" min="1" max="10000" value="20" required /></div></div><label for="new-key-owner">Assign to</label><select id="new-key-owner" required></select><button class="button button-primary" type="submit">＋ Generate API key</button><div id="generate-message" class="inline-message"></div><div id="new-key-result" class="new-key-result hidden"><div class="result-heading"><span class="success-check">✓</span><strong>Key generated successfully</strong></div><p>Copy this key now. The complete key cannot be viewed again.</p><div class="generated-key-row"><code id="generated-key-text"></code><button type="button" class="button button-secondary" id="copy-generated-key">Copy</button></div></div></form></section>
+          <section class="panel"><div class="panel-header"><div><h3>Access control guide</h3><p class="muted">Key permissions and safeguards</p></div></div><div class="permission-card"><span class="permission-mark student-mark">S</span><div><strong>Student key</strong><p>Own profile and own academic marks only.</p><span class="permission-tag">STUDENT-ONLY</span></div></div><div class="permission-card"><span class="permission-mark teacher-mark">T</span><div><strong>Teacher key</strong><p>Student directory and class-wide marks.</p><span class="permission-tag teacher-tag">CLASS ACCESS</span></div></div><div class="permission-card"><span class="permission-mark admin-mark">A</span><div><strong>Admin key</strong><p>Manage keys, limits, status and usage records.</p><span class="permission-tag admin-tag">ADMIN ONLY</span></div></div><div class="notice notice-blue small-notice"><span class="notice-symbol">i</span><p>Only a key hash is stored in MySQL. The full generated key is shown once.</p></div></section></div>
+          <section class="panel table-panel"><div class="panel-header"><div><h3>API key registry</h3><p class="muted">Review usage, change limits or revoke active keys.</p></div><button class="button button-secondary button-small" id="admin-refresh">↻ Refresh</button></div><div class="table-wrap"><table><thead><tr><th>KEY / OWNER</th><th>ROLE</th><th>USAGE</th><th>STATUS</th><th>CREATED</th><th>ACTIONS</th></tr></thead><tbody id="keys-table-body"><tr><td colspan="6" class="table-empty">Authenticate to load keys.</td></tr></tbody></table></div></section>
+          <section class="panel table-panel"><div class="panel-header"><div><h3>Recent API activity</h3><p class="muted">Latest request events recorded by the server.</p></div><span class="panel-badge">LAST 100</span></div><div class="table-wrap"><table><thead><tr><th>TIME</th><th>KEY / OWNER</th><th>METHOD</th><th>ENDPOINT</th><th>STATUS</th></tr></thead><tbody id="usage-table-body"><tr><td colspan="5" class="table-empty">No usage loaded.</td></tr></tbody></table></div></section>
+        </div>
+      </section>
+      <footer class="footer"><span>© 2026 UniAccess · University API Access Management</span><span><i class="footer-dot"></i> Powered by AJAX · Express · MySQL</span></footer>
+    </main>
+  </div>
+  <div id="toast-region" class="toast-region" aria-live="polite"></div>
+  <script src="/app.js"></script>
+</body>
+</html>
